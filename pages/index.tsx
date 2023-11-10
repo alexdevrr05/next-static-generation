@@ -1,15 +1,32 @@
-import { Button } from '@nextui-org/react';
+import { GetStaticProps, NextPage } from 'next';
 import { Layout } from '../components/layouts';
 
-export default function Home() {
+import { pokeApi } from '@/api';
+
+const Home: NextPage = (props) => {
+  console.log(props);
   return (
     <Layout title='Pokemon List'>
-      <main className='mx-2 my-2'>
-        <h1 className='text-3xl font-bold mb-2'>Hello world</h1>
-        <Button color='primary'>
-          <h1>Button</h1>
-        </Button>
-      </main>
+      <ul>
+        <li>Pokemon</li>
+        <li>Pokemon</li>
+        <li>Pokemon</li>
+        <li>Pokemon</li>
+        <li>Pokemon</li>
+        <li>Pokemon</li>
+      </ul>
     </Layout>
   );
-}
+};
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const { data } = await pokeApi.get('/pokemon?limit=151');
+
+  return {
+    props: {
+      pokemons: data.results,
+    },
+  };
+};
+
+export default Home;
