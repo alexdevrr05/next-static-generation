@@ -33,17 +33,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     }.svg`,
   }));
 
-  // const pokemonsUrls = pokemonsArray.map((pokemon) => axios.get(pokemon.url));
-  // const pokemonsUrlResp = await Promise.all(pokemonsUrls);
-  // const pokemons: SmallPokemon[] = pokemonsUrlResp.map(({ data }) => {
-  //   return {
-  //     id: data.id,
-  //     name: data.name,
-  //     url: `https://pokeapi.co/api/v2/pokemon/${data.id}`,
-  //     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`,
-  //   };
-  // });
-
   return {
     props: {
       pokemons,
