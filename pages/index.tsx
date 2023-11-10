@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
-import axios from 'axios';
+import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 
 import { Layout } from '../components/layouts';
-import { pokeApi } from '@/api';
 import { PokemonListResponse, SmallPokemon } from '@/interfaces';
+import { pokeApi } from '@/api';
 
 interface Props {
   pokemons: SmallPokemon[];
@@ -12,13 +12,31 @@ interface Props {
 const Home: NextPage<Props> = ({ pokemons }) => {
   return (
     <Layout title='Pokemon List'>
-      <ul>
-        {pokemons.map(({ name, id }) => (
-          <li key={id} className='font-semibold'>
-            #{id} - {name}
-          </li>
+      <div className='gap-2 grid grid-cols-2 sm:grid-cols-4'>
+        {pokemons.map(({ name, id, img }) => (
+          <Card
+            shadow='sm'
+            key={id}
+            isPressable
+            onPress={() => console.log('item pressed')}
+          >
+            <CardBody className='overflow-visible p-0'>
+              <Image
+                shadow='sm'
+                radius='lg'
+                width='100%'
+                alt={`${name}-img`}
+                className='w-full object-cover h-[140px]'
+                src={img}
+              />
+            </CardBody>
+            <CardFooter className='text-small justify-between'>
+              <b>{name}</b>
+              <p className='text-default-500'>#{id}</p>
+            </CardFooter>
+          </Card>
         ))}
-      </ul>
+      </div>
     </Layout>
   );
 };
