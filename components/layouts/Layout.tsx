@@ -3,13 +3,14 @@ import Head from 'next/head';
 
 interface LayoutProps {
   children: ReactNode;
+  title?: String;
 }
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout: FC<LayoutProps> = ({ children, title }) => {
   return (
     <>
       <Head>
-        <title>Pokemon App</title>
+        <title>{title || 'Pokemon App'}</title>
         <meta name='author' content='Alex DevRR' />
         <meta name='description' content='Information about pokemon XXXX' />
         <meta name='keyword' content='XXXX, pokemon, pokedex' />

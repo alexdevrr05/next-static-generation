@@ -3,7 +3,7 @@ import { Layout } from '../components/layouts';
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout title='Pokemon List'>
       <main className='mx-2 my-2'>
         <h1 className='text-3xl font-bold mb-2'>Hello world</h1>
         <Button color='primary'>
