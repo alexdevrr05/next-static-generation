@@ -15,7 +15,7 @@ const Home: NextPage<Props> = ({ pokemons }) => {
       <ul>
         {pokemons.map(({ name, id }) => (
           <li key={id} className='font-semibold'>
-            {name}
+            #{id} - {name}
           </li>
         ))}
       </ul>
