@@ -1,6 +1,8 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 
+import { CustomNavbar } from '../ui';
+
 interface LayoutProps {
   children: ReactNode;
   title?: String;
@@ -16,8 +18,8 @@ const Layout: FC<LayoutProps> = ({ children, title }) => {
         <meta name='keyword' content='XXXX, pokemon, pokedex' />
       </Head>
 
-      {/* Navbar */}
-      <main>{children}</main>
+      <CustomNavbar />
+      <main className='px-4 py-4'>{children}</main>
     </>
   );
 };
