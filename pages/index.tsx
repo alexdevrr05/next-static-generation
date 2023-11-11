@@ -12,7 +12,7 @@ interface Props {
 const Home: NextPage<Props> = ({ pokemons }) => {
   return (
     <Layout title='Pokemon List'>
-      <div className='gap-2 grid grid-cols-2 sm:grid-cols-4'>
+      <div className='gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'>
         {pokemons.map(({ name, id, img }) => (
           <Card
             shadow='sm'
@@ -26,12 +26,12 @@ const Home: NextPage<Props> = ({ pokemons }) => {
                 radius='lg'
                 width='100%'
                 alt={`${name}-img`}
-                className='w-full object-cover h-[140px]'
+                className='w-full object-cover h-[240px]'
                 src={img}
               />
             </CardBody>
             <CardFooter className='text-small justify-between'>
-              <b>{name}</b>
+              <b className='capitalize'>{name}</b>
               <p className='text-default-500'>#{id}</p>
             </CardFooter>
           </Card>
