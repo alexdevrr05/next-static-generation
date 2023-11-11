@@ -36,15 +36,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const { data } = await pokeApi.get<Pokemon>(`/pokemon/${id}`);
 
-  const pokemon = {
-    name: data.forms[0].name,
-    stats: data.stats,
-    moves: data.moves,
-  };
-
   return {
     props: {
-      pokemon,
+      pokemon: data,
     },
   };
 };
