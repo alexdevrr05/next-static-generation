@@ -1,19 +1,21 @@
 import { FC } from 'react';
 import { SmallPokemon } from '@/interfaces';
 import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
 interface Props {
   pokemon: SmallPokemon;
 }
 
 const PokemonCard: FC<Props> = ({ pokemon }) => {
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push(`/pokemon/${pokemon.id}`);
+  };
+
   return (
-    <Card
-      shadow='sm'
-      key={pokemon.id}
-      isPressable
-      onPress={() => console.log('item pressed')}
-    >
+    <Card shadow='sm' key={pokemon.id} isPressable onPress={onClick}>
       <CardBody className='overflow-visible p-0'>
         <Image
           shadow='sm'
