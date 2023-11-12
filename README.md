@@ -38,3 +38,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 📚 Libraries used
+
+- <a href="https://nextui.org/" target="_blank">Next UI</a>
+- <a href="https://axios-http.com/es/docs/intro" target="_blank">Axios</a>
+- <a href="https://www.framer.com/motion/" target="_blank">Framer Motion</a>
+- <a href="https://tailwindcss.com/" target="_blank">Tailwind Css</a>🚀
+
+## Home page
+
+<img src="assets/poke-home.png" alt="ss-1"   style="margin-right: 10px">
+
+## Pokemon details page
+
+<img src="assets/poke-details.png" alt="ss-1"   style="margin-right: 10px">
