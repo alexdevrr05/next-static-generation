@@ -1,8 +1,10 @@
+import { Layout } from '@/components/layouts';
+
 const Favorites = () => {
   return (
-    <div>
+    <Layout>
       <h1>Favorites</h1>
-    </div>
+    </Layout>
   );
 };
 

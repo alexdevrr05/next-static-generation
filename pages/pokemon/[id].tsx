@@ -1,4 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Image from 'next/image';
+
 import {
   Button,
   Card,
@@ -10,8 +12,6 @@ import {
 import { Layout } from '@/components/layouts';
 import { pokeApi } from '@/api';
 import { Pokemon } from '@/interfaces';
-
-import Image from 'next/image';
 
 interface Props {
   pokemon: Pokemon;
