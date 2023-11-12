@@ -12,15 +12,20 @@ import {
 import { Layout } from '@/components/layouts';
 import { pokeApi } from '@/api';
 import { Pokemon } from '@/interfaces';
+import { localFavorite } from '@/utils';
 
 interface Props {
   pokemon: Pokemon;
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+  const onToggleFavorite = () => {
+    localFavorite.toggleFavorite(pokemon.id);
+  };
+
   return (
     // overflow: visible; en un elemento, este permite que el contenido sobresalga de su contenedor si es más grande que el contenedor mismo
-    <Layout>
+    <Layout title={pokemon.name}>
       <div className='flex py-2 gap-4'>
         <Card shadow='sm'>
           <CardBody className='overflow-visible'>
@@ -38,7 +43,12 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
         <Card fullWidth className='px-4 pt-2'>
           <CardHeader className='pb-0 sm:flex-row flex-col items-center justify-between'>
             <h1 className='capitalize text-xl font-bold'>{pokemon.name}</h1>
-            <Button isIconOnly color='danger' aria-label='like'>
+            <Button
+              isIconOnly
+              color='danger'
+              aria-label='like'
+              onClick={onToggleFavorite}
+            >
               <Image src='/heart.png' alt='love-icon' width={25} height={25} />
             </Button>
           </CardHeader>
