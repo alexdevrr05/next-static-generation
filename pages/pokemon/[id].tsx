@@ -81,6 +81,7 @@ export const getStaticPaths: GetStaticPaths = () => {
     paths: pokemons151.map((id) => ({
       params: { id },
     })),
+    // show 404 if id not exists
     fallback: false,
   };
 };

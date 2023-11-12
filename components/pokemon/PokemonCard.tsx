@@ -18,11 +18,10 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
     <Card shadow='sm' key={pokemon.id} isPressable onPress={onClick}>
       <CardBody className='overflow-visible p-0'>
         <Image
-          shadow='sm'
           radius='lg'
           width='100%'
           alt={`${pokemon.name}-img`}
-          className='w-full object-cover h-[240px]'
+          className='w-full object-cover max-h-[300px]'
           src={pokemon.img}
         />
       </CardBody>
