@@ -20,6 +20,10 @@ interface Props {
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
   const onToggleFavorite = () => {
+    /**
+     * If we do it this way,
+     * it is not called in the server (and that's okay)
+     */
     localFavorite.toggleFavorite(pokemon.id);
   };
 
