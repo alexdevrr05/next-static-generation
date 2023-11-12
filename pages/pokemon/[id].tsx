@@ -42,10 +42,12 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
               <Image src='/heart.png' alt='love-icon' width={25} height={25} />
             </Button>
           </CardHeader>
+
           <CardBody className='overflow-visible'>
-            <h2 className='text-lg font-semibold'>Sprites</h2>
+            <h2 className='text-lg font-semibold pb-4'>Sprites: </h2>
+
             {/* Sprites content */}
-            <div className='flex justify-center'>
+            <div className='flex justify-between'>
               <ImageNextUI
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
@@ -55,11 +57,11 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                 alt={pokemon.name}
               />
               <ImageNextUI
-                src={pokemon.sprites?.front_female || '/no-image.png'}
+                src={pokemon.sprites?.front_shiny || '/no-image.png'}
                 alt={pokemon.name}
               />
               <ImageNextUI
-                src={pokemon.sprites?.back_female || '/no-image.png'}
+                src={pokemon.sprites?.back_shiny || '/no-image.png'}
                 alt={pokemon.name}
               />
             </div>

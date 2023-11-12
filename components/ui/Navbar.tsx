@@ -11,7 +11,7 @@ const CustomNavbar = () => {
     <Navbar maxWidth='full'>
       <NavbarBrand>
         <Link href='/' className='font-bold text-inherit'>
-          Pokemon
+          Home
         </Link>
       </NavbarBrand>
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
@@ -29,7 +29,7 @@ const CustomNavbar = () => {
       <NavbarContent justify='end'>
         <NavbarItem className='hidden md:flex font-bold'>
           <Link className='text-danger' href='#'>
-            Favoritos
+            Favorites
           </Link>
         </NavbarItem>
       </NavbarContent>
