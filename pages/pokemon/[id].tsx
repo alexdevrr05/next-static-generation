@@ -30,9 +30,9 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
   return (
     // overflow: visible; en un elemento, este permite que el contenido sobresalga de su contenedor si es más grande que el contenedor mismo
     <Layout title={pokemon.name}>
-      <div className='flex py-2 gap-4'>
+      <div className='flex py-2 gap-4 flex-col md:flex-row'>
         <Card shadow='sm'>
-          <CardBody className='overflow-visible'>
+          <CardBody className='overflow-visible items-center'>
             <ImageNextUI
               src={
                 pokemon.sprites.other?.dream_world.front_default ||
@@ -45,7 +45,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
         </Card>
         {/* isBlurred */}
         <Card fullWidth className='px-4 pt-2'>
-          <CardHeader className='pb-0 sm:flex-row flex-col items-center justify-between'>
+          <CardHeader className='pb-0 sm:flex-row  items-center justify-between'>
             <h1 className='capitalize text-xl font-bold'>{pokemon.name}</h1>
             <Button
               isIconOnly
@@ -61,7 +61,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
             <h2 className='text-lg font-semibold pb-4'>Sprites: </h2>
 
             {/* Sprites content */}
-            <div className='flex justify-between'>
+            <div className='flex flex-col justify-between sm:flex-row items-center'>
               <ImageNextUI
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
