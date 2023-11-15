@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 
@@ -19,12 +20,13 @@ interface Props {
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+  const [isFavPokemon, setIsFavPokemon] = useState<boolean>(
+    localFavorite.isPokemonInFavorites(pokemon.id)
+  );
+
   const onToggleFavorite = () => {
-    /**
-     * If we do it this way,
-     * it is not called in the server (and that's okay)
-     */
     localFavorite.toggleFavorite(pokemon.id);
+    setIsFavPokemon(!isFavPokemon);
   };
 
   return (
@@ -49,7 +51,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
             <h1 className='capitalize text-xl font-bold'>{pokemon.name}</h1>
             <Button
               isIconOnly
-              color='danger'
+              color={isFavPokemon ? 'danger' : 'default'}
               aria-label='like'
               onClick={onToggleFavorite}
             >
