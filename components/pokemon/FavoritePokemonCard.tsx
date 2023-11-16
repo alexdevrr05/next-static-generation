@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Card, CardBody, Image } from '@nextui-org/react';
 
 type Props = {
@@ -5,8 +6,12 @@ type Props = {
 };
 
 const FavoritePokemonCard = ({ pokemonId }: Props) => {
+  const router = useRouter();
+
+  const onClick = () => router.push(`/pokemon/${pokemonId}`);
+
   return (
-    <Card key={pokemonId} isHoverable>
+    <Card key={pokemonId} isPressable onPress={onClick}>
       <CardBody className='overflow-visible py-2 items-center'>
         <Image
           alt={`Pokemon Fav ${pokemonId}`}
