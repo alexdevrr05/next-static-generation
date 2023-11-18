@@ -43,7 +43,7 @@ const PokemonByNamePage: FC<Props> = ({ pokemon }) => {
   };
 
   return (
-    <Layout title='Pokemon Page by Name'>
+    <Layout title={pokemon.name}>
       <div className='flex py-2 gap-4 flex-col md:flex-row'>
         <Card shadow='sm'>
           <CardBody className='overflow-visible items-center'>

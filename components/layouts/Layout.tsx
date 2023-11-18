@@ -18,7 +18,7 @@ const Layout: FC<LayoutProps> = ({ children, title }) => {
         <meta name='author' content='Alex DevRR' />
         <meta
           name='description'
-          content={`Information about pokemon ${title}`}
+          content={`Information about Pokemon ${title}`}
         />
         <meta name='keyword' content={`${title}, pokemon, pokedex`} />
 
