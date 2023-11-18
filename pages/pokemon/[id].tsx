@@ -15,6 +15,7 @@ import { Layout } from '@/components/layouts';
 import { pokeApi } from '@/api';
 import { Pokemon } from '@/interfaces';
 import { localFavorite } from '@/utils';
+import { pokemonDataReturn } from '@/helpers';
 
 interface Props {
   pokemon: Pokemon;
@@ -121,9 +122,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const { data } = await pokeApi.get<Pokemon>(`/pokemon/${id}`);
 
+  const pokemon = pokemonDataReturn(data);
+
   return {
     props: {
-      pokemon: data,
+      pokemon,
     },
   };
 };
