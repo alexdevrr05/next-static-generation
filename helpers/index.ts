@@ -1,1 +1,0 @@
-export { pokemonDataReturn } from './pokemonDataReturn';

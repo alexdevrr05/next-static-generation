@@ -13,7 +13,7 @@ import {
 import { pokeApi } from '@/api';
 import { Layout } from '@/components/layouts';
 import { Pokemon, PokemonListResponse } from '@/interfaces';
-import { pokemonDataReturn } from '@/helpers';
+import { getPokemonInfo } from '@/utils';
 
 interface Props {
   pokemon: Pokemon;
@@ -92,13 +92,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { name } = ctx.params as { name: string };
-  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}`);
-
-  const pokemon = pokemonDataReturn(data);
 
   return {
     props: {
-      pokemon,
+      pokemon: await getPokemonInfo(name),
     },
   };
 };
