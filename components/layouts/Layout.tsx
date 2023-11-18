@@ -9,13 +9,29 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children, title }) => {
+  const origin = typeof window === 'undefined' ? '' : window.origin;
+
   return (
     <>
       <Head>
         <title>{title || 'Pokemon App'}</title>
         <meta name='author' content='Alex DevRR' />
-        <meta name='description' content='Information about pokemon XXXX' />
-        <meta name='keyword' content='XXXX, pokemon, pokedex' />
+        <meta
+          name='description'
+          content={`Information about pokemon ${title}`}
+        />
+        <meta name='keyword' content={`${title}, pokemon, pokedex`} />
+
+        {/* Open Graph Meta Tags */}
+        <meta
+          property='og:title'
+          content={`Information about pokemon ${title}`}
+        />
+        <meta
+          property='og:description'
+          content={`This page is about the Pokemon ${title}`}
+        />
+        <meta property='og:image' content={`${origin}/img/banner.jpeg`} />
       </Head>
 
       <CustomNavbar />
