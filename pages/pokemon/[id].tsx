@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
-
 import {
   Button,
   Card,
@@ -12,9 +11,8 @@ import {
 import confetti from 'canvas-confetti';
 
 import { Layout } from '@/components/layouts';
-import { pokeApi } from '@/api';
 import { Pokemon } from '@/interfaces';
-import { localFavorite, getPokemonInfo } from '@/utils';
+import { getPokemonInfo, localFavorite } from '@/utils';
 
 interface Props {
   pokemon: Pokemon;

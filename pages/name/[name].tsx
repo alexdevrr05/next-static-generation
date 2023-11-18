@@ -1,74 +1,99 @@
-import { FC } from 'react';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { FC, useState } from 'react';
 import {
+  Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
-  Divider,
   Image,
-  Link,
+  Image as ImageNextUI,
 } from '@nextui-org/react';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import confetti from 'canvas-confetti';
 
 import { pokeApi } from '@/api';
 import { Layout } from '@/components/layouts';
 import { Pokemon, PokemonListResponse } from '@/interfaces';
-import { getPokemonInfo } from '@/utils';
+import { getPokemonInfo, localFavorite } from '@/utils';
 
 interface Props {
   pokemon: Pokemon;
 }
 
-const textPokemonInfo = 'text-2xl font-semibold';
-
 const PokemonByNamePage: FC<Props> = ({ pokemon }) => {
+  const [isFavPokemon, setIsFavPokemon] = useState<boolean>(
+    localFavorite.isPokemonInFavorites(pokemon.id)
+  );
+
+  const onToggleFavorite = () => {
+    localFavorite.toggleFavorite(pokemon.id);
+    setIsFavPokemon(!isFavPokemon);
+
+    if (isFavPokemon) return;
+
+    confetti({
+      zIndex: 999,
+      particleCount: 100,
+      spread: 160,
+      angle: -100,
+      origin: {
+        x: 1,
+        y: 0,
+      },
+    });
+  };
+
   return (
     <Layout title='Pokemon Page by Name'>
-      <div
-        className='flex flex-col  w-full justify-center items-center'
-        style={{ height: 'calc(100vh - 100px)' }}
-      >
-        <Card className='min-w-[400px]'>
-          <CardHeader className='flex gap-3'>
-            <Image
-              alt='pokemon logo'
-              height={70}
-              radius='sm'
-              src={pokemon.sprites.front_default}
-              width={70}
+      <div className='flex py-2 gap-4 flex-col md:flex-row'>
+        <Card shadow='sm'>
+          <CardBody className='overflow-visible items-center'>
+            <ImageNextUI
+              src={
+                pokemon.sprites.other?.dream_world.front_default ||
+                '/no-image.png'
+              }
+              alt={pokemon.name}
+              width={300}
             />
-            <div className='flex flex-col'>
-              <p className='text-md font-bold capitalize'>{pokemon.name}</p>
-              <p className='text-small text-default-500'>alexdevrr05</p>
-            </div>
-          </CardHeader>
-          <Divider />
-
-          <CardBody>
-            <p className={textPokemonInfo}>
-              Weight:{' '}
-              <span className='font-thin font-sm'>{pokemon.weight}kg</span>
-            </p>
-            <span className={textPokemonInfo}>Abilities:</span>
-            <ul className=''>
-              {pokemon.stats.map((stat, i) => {
-                return (
-                  <li className='capitalize' key={i}>
-                    {stat.stat.name}
-                  </li>
-                );
-              })}
-            </ul>
           </CardBody>
-          <CardFooter>
-            <Link
-              isExternal
-              showAnchorIcon
-              href={`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`}
+        </Card>
+        {/* isBlurred */}
+        <Card fullWidth className='px-4 pt-2'>
+          <CardHeader className='pb-0 sm:flex-row  items-center justify-between'>
+            <h1 className='capitalize text-xl font-bold'>{pokemon.name}</h1>
+            <Button
+              isIconOnly
+              color={isFavPokemon ? 'danger' : 'default'}
+              aria-label='like'
+              onClick={onToggleFavorite}
             >
-              Visit more information.
-            </Link>
-          </CardFooter>
+              <Image src='/heart.png' alt='love-icon' width={25} height={25} />
+            </Button>
+          </CardHeader>
+
+          <CardBody className='overflow-visible'>
+            <h2 className='text-lg font-semibold pb-4'>Sprites: </h2>
+
+            {/* Sprites content */}
+            <div className='flex flex-col justify-between sm:flex-row items-center'>
+              <ImageNextUI
+                src={pokemon.sprites.front_default}
+                alt={pokemon.name}
+              />
+              <ImageNextUI
+                src={pokemon.sprites.back_default}
+                alt={pokemon.name}
+              />
+              <ImageNextUI
+                src={pokemon.sprites?.front_shiny || '/no-image.png'}
+                alt={pokemon.name}
+              />
+              <ImageNextUI
+                src={pokemon.sprites?.back_shiny || '/no-image.png'}
+                alt={pokemon.name}
+              />
+            </div>
+          </CardBody>
         </Card>
       </div>
     </Layout>
