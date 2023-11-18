@@ -25,7 +25,7 @@ const Layout: FC<LayoutProps> = ({ children, title }) => {
         {/* Open Graph Meta Tags */}
         <meta
           property='og:title'
-          content={`Information about pokemon ${title}`}
+          content={`Information about Pokemon ${title}`}
         />
         <meta
           property='og:description'

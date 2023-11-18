@@ -28,7 +28,7 @@ const CustomNavbar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
-        <NavbarItem className='hidden md:flex font-bold'>
+        <NavbarItem className='md:flex font-bold'>
           <NextJSLink className='text-danger' href='/favorites'>
             Favorites
           </NextJSLink>
