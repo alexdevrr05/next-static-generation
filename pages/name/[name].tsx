@@ -78,9 +78,10 @@ export default PokemonByNamePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
+  const pokemonNames: string[] = data.results.map((pokemon) => pokemon.name);
 
   return {
-    paths: data.results.map(({ name }) => ({
+    paths: pokemonNames.map((name) => ({
       params: { name },
     })),
     // show 404 if id not exists
