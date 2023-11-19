@@ -13,7 +13,6 @@ export const getPokemonInfo = async (param: string) => {
       stats,
     };
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
